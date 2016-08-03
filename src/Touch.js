@@ -190,6 +190,11 @@ export class TouchBackend {
          * Attaching the event listener to the body so that touchmove will work while dragging over multiple target elements.
          */
         this.addEventListener(document.querySelector('body'), 'move', handleMove);
+
+
+        return () => {
+            this.removeEventListener(document.querySelector('body'), 'move', handleMove);
+        };
     }
 
     getSourceClientOffset (sourceId) {
